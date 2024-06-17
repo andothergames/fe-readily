@@ -9,3 +9,9 @@ export const fetchArticles = () => {
     return res.data;
   });
 };
+
+export const fetchArticle = (id) => {
+    return readilyAPI.get(`/articles/${id}`).then((res) => {
+      return res.data;
+    });
+  };
