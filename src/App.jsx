@@ -1,11 +1,17 @@
-import icon from "/readily-icon.png";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { Header } from "./components/Header";
+import { Nav } from "./components/Nav";
+import { Articles } from "./components/Articles";
 
 function App() {
   return (
     <section>
-      <img src={icon} className="logo" alt="readily icon" />
-      <h1>Readily</h1>
+      <Header />
+      <Nav />
+      <Routes>
+        <Route path={"/"} element={<Articles />} />
+      </Routes>
     </section>
   );
 }
