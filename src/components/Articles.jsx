@@ -1,38 +1,38 @@
 import { useEffect, useState } from "react";
 import { fetchArticles, fetchArticle } from "../api";
+import { Link } from "react-router-dom";
 import { ArticleCard } from "./ArticleCard";
 import { Article } from "./Article";
 
-export const Articles = () => {
+export const Articles = ({ topic }) => {
   const [articles, setArticles] = useState([]);
-  const [selectedArticle, setSelectedArticle] = useState(null);
 
   useEffect(() => {
-    fetchArticles().then((articles) => {
+    fetchArticles(topic).then((articles) => {
       setArticles(articles);
     });
-  }, []);
+  }, [topic]);
 
-  const handleArticleSelect = (selectedArticle) => {
-    fetchArticle(selectedArticle).then((article) => {
-      setSelectedArticle(article)
-    })
-  }
+  const handleArticleSelect = (id) => {
+    fetchArticle(id).then((article) => {
+      setArticles([article]);
+    });
+  };
 
   return (
     <section>
-        {selectedArticle ? 
-            <Article selectedArticle={selectedArticle} setSelectedArticle={setSelectedArticle} />
-        :
-      <ul className="cards">
-        {articles.map((article) => {
-          return <ArticleCard
+      {articles.length === 1 ? (
+        <Article selectedArticle={articles[0]} />
+      ) : (
+        <ul className="cards">
+          {articles.map((article) => (
+           <Link to= {`/articles/${article.article_id}`} key={article.article_id}>
+            <ArticleCard
               article={article}
               key={article.article_id}
-              onClick={() => handleArticleSelect(article.article_id)}
-            />
-        })}
-      </ul>}
+              onClick={() => handleArticleSelect(article.article_id)} /></Link>))}
+        </ul>
+      )}
     </section>
   );
 };
