@@ -17,3 +17,41 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
+nav {
+  margin: 30px;
+}
+
+/* struggling to get this grid to be dynamic and adjust how many columns there are depending on window width but I will revisit this */
+.cards {
+  display: grid;
+  gap: 40px;
+  list-style: none;
+  grid-template-columns: auto auto auto;
+}
+
+.article-card {
+  position: relative;
+  border-radius: 20px;
+  box-shadow: rgba(20, 102, 201, 0.35) 0px 5px 15px;
+  margin: 0;
+}
+
+.article-card img {
+  width: 100%;
+  max-width: 300px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.article-card h3 {
+  color: #000000;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(250, 202, 90, 0.8);
+  padding: 10px;
+  width: calc(100% - 20px);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
