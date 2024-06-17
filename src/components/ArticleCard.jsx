@@ -1,6 +1,7 @@
-export const ArticleCard = ({ article }) => {
+export const ArticleCard = ({ article, onClick }) => {
+    
   return (
-    <li className="article-card">
+    <li className="article-card" onClick={onClick}>
       <h3>{article.title}</h3>
       <img src={article.article_img_url} alt={article.title} />
       <p>Topic: {article.topic}</p>
