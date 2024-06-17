@@ -1,18 +1,21 @@
-export const Article = ({selectedArticle}) => {
+
+
+export const Article = ({ selectedArticle }) => {
+    const a = selectedArticle[0]
 
     return (
       <section className="article-post">
-        <img src={selectedArticle.article_img_url} alt={selectedArticle.title} />
-        <h3>{selectedArticle.title}</h3>
+        <img src={a.article_img_url} alt={a.title} />
+        <h3>{a.title}</h3>
         <p>
-        <span>Topic: {selectedArticle.topic} </span>
+        <span>Topic: {a.topic} </span>
         <span>·</span>
-        <span>By: {selectedArticle.author}</span>
+        <span>By: {a.author}</span>
         <span>·</span>
-        <span>Votes: {selectedArticle.votes}</span>
+        <span>Votes: {a.votes}</span>
         <span>·</span>
-        <span>Comments: {selectedArticle.comment_count}</span></p>
-        <p>{selectedArticle.body}</p>
+        <span>Comments: {a.comment_count}</span></p>
+        <p>{a.body}</p>
       </section>
     );
   };

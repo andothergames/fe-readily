@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
-import { fetchArticles, fetchArticle } from "../api";
+import { fetchArticle } from "../api";
 import { Link } from "react-router-dom";
 import { ArticleCard } from "./ArticleCard";
 import { Article } from "./Article";
 
-export const Articles = ({ topic }) => {
-  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    fetchArticles(topic).then((articles) => {
-      setArticles(articles);
-    });
-  }, [topic]);
+export const Articles = ({ articles, setArticles }) => {
 
   const handleArticleSelect = (id) => {
     fetchArticle(id).then((article) => {
@@ -22,7 +14,7 @@ export const Articles = ({ topic }) => {
   return (
     <section>
       {articles.length === 1 ? (
-        <Article selectedArticle={articles[0]} />
+        <Article selectedArticle={articles} />
       ) : (
         <ul className="cards">
           {articles.map((article) => (
