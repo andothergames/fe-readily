@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchArticle } from "../api";
 import { patchArticle } from "../api";
 import { dateConverter } from "../utils/dateConverter";
-import { Comments } from "./Comments";
+import { Comments } from "./comments";
 import { useParams } from "react-router-dom";
 
 export const Article = () => {
@@ -48,24 +48,28 @@ export const Article = () => {
   return (
     <section>
       <section className="article-post">
-        <img
-          src={selectedArticle.article_img_url}
-          alt={selectedArticle.title}
-        />
-        <h3>{selectedArticle.title}</h3>
-        <p className="article-details">
+        <h1>{selectedArticle.title}</h1>
+        <section className="article-details">
+        <p>
           <span>Topic: {selectedArticle.topic} </span>
           <span>·</span>
           <span>By: {selectedArticle.author}</span>
           <span>·</span>
           <span>{dateConverter(selectedArticle.created_at)}</span>
         </p>
+        </section>
+        <section className="article-content">
+        <img
+          src={selectedArticle.article_img_url}
+          alt={selectedArticle.title}
+          />
+          <p className="article-body">{selectedArticle.body}</p>
+        </section>
         <span className="votes">
           <i className={thumbsUp} onClick={handlePlusVote}></i>
           {votes}
           <i className={thumbsDown} onClick={handleMinusVote}></i>
         </span>
-        <p>{selectedArticle.body}</p>
       </section>
       <section className="comments">
         <h3>Comments ({selectedArticle.comment_count}):</h3>
