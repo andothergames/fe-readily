@@ -5,17 +5,25 @@ const readilyAPI = axios.create({
 });
 
 export const fetchArticles = (topicQ) => {
-return readilyAPI.get('/articles', {
-    params: {
-      topic: topicQ,
-    }
-  }).then((res) => {
-      return res.data;
+  return readilyAPI
+    .get("/articles", {
+      params: {
+        topic: topicQ,
+      },
     })
-}
+    .then((res) => {
+      return res.data;
+    });
+};
 
 export const fetchArticle = (id) => {
   return readilyAPI.get(`/articles/${id}`).then((res) => {
+    return res.data;
+  });
+};
+
+export const fetchComments = (id) => {
+  return readilyAPI.get(`articles/${id}/comments`).then((res) => {
     return res.data;
   });
 };
