@@ -12,13 +12,10 @@ export const Comments = ({ id }) => {
   }, [id]);
 
   return (
-    <section className='comments'>
-        <h3>Comments:</h3>
     <ul>
       {comments.map((comment) => {
         return <CommentCard key={comment.comment_id} comment={comment} />;
       })}
     </ul>
-    </section>
   );
 };

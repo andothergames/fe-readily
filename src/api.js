@@ -27,3 +27,9 @@ export const fetchComments = (id) => {
     return res.data;
   });
 };
+
+export const patchArticle = (id, body) => {
+  return readilyAPI.patch(`/articles/${id}`, body).then((res) => {
+    return res.data.votes
+  })
+}
