@@ -5,12 +5,17 @@ import { ArticleCard } from "./ArticleCard";
 export const Articles = () => {
   const [topic, setTopic] = useState("");
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetchArticles(topic).then((articles) => {
+      setIsLoading(false);
       setArticles(articles);
     });
   }, []);
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <section>
