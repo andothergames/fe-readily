@@ -13,7 +13,7 @@ export const ArticleCard = ({ article }) => {
       className="article-card"
       onClick={() => handleArticleSelect(article.article_id)}
     >
-      <h3>{article.title}</h3>
+      <h1>{article.title}</h1>
       <img src={article.article_img_url} alt={article.title} />
       <p>Topic: {article.topic}</p>
       <p>By: {article.author}</p>

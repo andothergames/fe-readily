@@ -1,97 +1,219 @@
-@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+@font-face {
+  font-family: "Plush";
+  src: url(/public/fonts/Plush-Medium-BF654c401412ccd.otf);
+}
+
+@font-face {
+  font-family: "karla";
+  src: url(/public/fonts/Karla-Light.ttf);
+}
 
 #root {
   max-width: 1280px;
-  margin: 0 auto;
   padding: 1rem;
   text-align: center;
+  margin: auto;
 }
 
+h1 {
+  font-size: 3rem;
+  font-family: "Plush";
+}
+
+p {
+  font-family: "karla";
+}
+
+/* LOGOS */
+
 .logo {
-  height: 6em;
-  padding: 1.1em;
+  height: 2.4em;
+  margin-bottom: 0;
+  margin-top: auto;
+  padding-bottom: 10px;
+  padding-right: 10px;
   will-change: filter;
   transition: filter 300ms;
+  object-fit: contain;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #ea8feeff);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #ea8feeff);
+}
+
+/* HEADER/NAV */
+
+header {
+  display: flex;
+  margin: 40px;
 }
 
 nav {
   margin: 30px;
 }
 
-/* struggling to get this grid to be dynamic and adjust how many columns there are depending on window width but I will revisit this friday */
+header h1,
+img,
+.article-card,
+.votes i {
+  cursor: pointer;
+}
+
+/* ARTICLES */
+
 .cards {
+  list-style: none;
   display: grid;
   gap: 40px;
-  list-style: none;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
+}
+
+/* MOBILE GRID WIDTHS */
+
+@media only screen and (max-width: 1400px) {
+  .cards {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .cards {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .cards {
+    grid-template-columns: auto;
+  }
 }
 
 .article-card {
   position: relative;
-  border-radius: 20px;
+  border-bottom-right-radius: 20px;
   box-shadow: rgba(20, 102, 201, 0.35) 0px 5px 15px;
-  margin: 0;
-  cursor: pointer;
-}
-
-.article-card:hover {
-  box-shadow: rgba(3, 150, 64, 0.35) 0px 5px 15px;
 }
 
 .article-card img {
   width: 100%;
   max-width: 300px;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
 }
 
-.article-card h3 {
-  color: #000000;
+.article-card h1 {
+  font-family: karla;
+  font-size: 1.2rem;
+  color: #ffffff;
+  padding: 10px 10px 40px;
   position: absolute;
-  top: 0px;
-  left: 0px;
-  background-color: rgba(250, 202, 90, 0.8);
-  padding: 10px;
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
   width: calc(100% - 20px);
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
 }
+
+.article-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.article-card:hover h1 {
+  text-decoration: underline;
+}
+
+/* LOADING BAR */
+
+.spinner-pink {
+  color: #ea8feeff;
+}
+
+.spinner-yellow two {
+  color: #edc322ff;
+}
+
+.spinner-green three {
+  color: #20bcb1ff;
+}
+
+/* SINGLE ARTICLES */
 
 .article-post {
-  text-align: left;
-  border-radius: 20px;
+  position: relative;
+  margin: 0 auto;
   max-width: 1000px;
+  min-width: 300px;
+  border: solid blue 1px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
-.article-post img {
-  border-radius: 20px;
-  float: left;
-  max-width: 400px;
-  margin: 0 40px 20px;
-}
-
-.article-post p, h3 {
-  padding: 8px;
-}
-
-.article-post span {
-  padding-right: 14px;
+.article-post h1 {
+  font-family: Plush;
+  font-size: 1.8rem;
+  padding: 14px 0 14px 40px;
+  text-align: left;
 }
 
 .article-details {
-  color:#8b8b8b;
+  text-align: left;
+  margin-left: 40px;
 }
+
+.article-details p {
+  padding: 0;
+}
+
+.article-details span {
+  text-align: left;
+  padding-right: 14px;
+  color: #8b8b8b;
+}
+
+.article-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.article-body {
+  flex: 1;
+}
+
+.article-post img {
+  float: left;
+  max-width: 400px;
+  padding: 20px 20px 20px 40px;
+}
+
+.article-body {
+  padding-left: 20px 40px 20px 20px;
+  text-align: left;
+}
+
+/* VOTES */
+
+.votes {
+  font-size: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.votes i {
+  margin: 10px;
+  font-size: 26px;
+}
+
+/* COMMENTS  */
+
 .comment-card {
   list-style-type: none;
   text-align: left;
-  margin-bottom:40px;
+  margin-bottom: 40px;
   padding: 10px;
   border: solid rgb(2, 191, 191) 2px;
   border-radius: 20px;
@@ -101,13 +223,15 @@ nav {
 }
 
 .comments {
-  margin-top: 40px;
+  margin: 40px auto;
+  max-width: 1000px;
+  min-width: 300px;
 }
 .comments h3 {
   margin-left: 40px;
   margin-bottom: 20px;
   text-align: left;
-  color:rgb(2, 191, 191);
+  color: rgb(2, 191, 191);
 }
 
 .comment-card span {
@@ -117,19 +241,4 @@ nav {
   padding: 0 10px;
   color: rgb(16, 138, 138);
   background-color: white;
-}
-
-
-header h1, img {
-  cursor: pointer;
-}
-
-.votes {
-  font-size: 20px;
-}
-
-.votes i {
-  margin: 10px;
-  cursor: pointer;
-  font-size: 26px;
 }
