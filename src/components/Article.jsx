@@ -1,4 +1,4 @@
-
+import { dateConverter } from "../utils/dateConverter";
 
 export const Article = ({ selectedArticle }) => {
     const a = selectedArticle[0]
@@ -11,6 +11,8 @@ export const Article = ({ selectedArticle }) => {
         <span>Topic: {a.topic} </span>
         <span>·</span>
         <span>By: {a.author}</span>
+        <span>·</span>
+        <span>{dateConverter(a.created_at)}</span>
         <span>·</span>
         <span>Votes: {a.votes}</span>
         <span>·</span>
