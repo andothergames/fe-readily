@@ -1,3 +1,5 @@
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -22,7 +24,7 @@ nav {
   margin: 30px;
 }
 
-/* struggling to get this grid to be dynamic and adjust how many columns there are depending on window width but I will revisit this */
+/* struggling to get this grid to be dynamic and adjust how many columns there are depending on window width but I will revisit this friday */
 .cards {
   display: grid;
   gap: 40px;
@@ -82,7 +84,41 @@ nav {
   padding: 8px;
 }
 
-
 .article-post span {
   padding-right: 14px;
+}
+
+.comment-card {
+  list-style-type: none;
+  text-align: left;
+  margin-bottom:40px;
+  padding: 10px;
+  border: solid rgb(2, 191, 191) 2px;
+  border-radius: 20px;
+}
+.comment-card p {
+  padding: 30px;
+}
+
+.comments {
+  margin-top: 40px;
+}
+.comments h3 {
+  margin-left: 40px;
+  margin-bottom: 20px;
+  text-align: left;
+  color:rgb(2, 191, 191);
+}
+
+.comment-card span {
+  float: right;
+  position: relative;
+  text-align: right;
+  padding: 0 10px;
+  color: rgb(16, 138, 138);
+  background-color: white;
+}
+
+header h1, img {
+  cursor: pointer;
 }

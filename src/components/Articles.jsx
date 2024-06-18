@@ -1,30 +1,24 @@
-import { fetchArticle } from "../api";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { fetchArticles } from "../api";
 import { ArticleCard } from "./ArticleCard";
-import { Article } from "./Article";
 
-export const Articles = ({ articles, setArticles }) => {
+export const Articles = () => {
+  const [topic, setTopic] = useState("");
+  const [articles, setArticles] = useState([]);
 
-  const handleArticleSelect = (id) => {
-    fetchArticle(id).then((article) => {
-      setArticles([article]);
+  useEffect(() => {
+    fetchArticles(topic).then((articles) => {
+      setArticles(articles);
     });
-  };
+  }, []);
 
   return (
     <section>
-      {articles.length === 1 ? (
-        <Article selectedArticle={articles} />
-      ) : (
-        <ul className="cards">
-          {articles.map((article) => (
-           <Link to= {`/articles/${article.article_id}`} key={article.article_id}>
-            <ArticleCard
-              article={article}
-              key={article.article_id}
-              onClick={() => handleArticleSelect(article.article_id)} /></Link>))}
-        </ul>
-      )}
+      <ul className="cards">
+        {articles.map((article) => (
+          <ArticleCard article={article} key={article.article_id} />
+        ))}
+      </ul>
     </section>
   );
 };
