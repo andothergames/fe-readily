@@ -242,3 +242,22 @@ img,
   color: rgb(16, 138, 138);
   background-color: white;
 }
+
+/* FORM */
+
+.comment-form {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.user-dropdown {
+  width: 40%;
+  margin-left: 0;
+}
+
+.form-cell {
+  margin: 30px;
+}
+.input {
+  margin: 20px;
+}

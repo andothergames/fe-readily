@@ -3,6 +3,7 @@ import { fetchArticle } from "../api";
 import { patchArticle } from "../api";
 import { dateConverter } from "../utils/dateConverter";
 import { Comments } from "./comments";
+
 import { useParams } from "react-router-dom";
 
 export const Article = () => {
@@ -71,10 +72,8 @@ export const Article = () => {
           <i className={thumbsDown} onClick={handleMinusVote}></i>
         </span>
       </section>
-      <section className="comments">
-        <h3>Comments ({selectedArticle.comment_count}):</h3>
-        <Comments id={id} />
+      <Comments id={id} commentCount={selectedArticle.comment_count}/>
       </section>
-    </section>
+
   );
 };
