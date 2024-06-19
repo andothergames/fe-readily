@@ -33,3 +33,15 @@ export const patchArticle = (id, body) => {
     return res.data.votes
   })
 }
+
+export const fetchUsers = () => {
+  return readilyAPI.get('users').then((res) => {
+    return res.data;
+  })
+}
+
+export const postComment = (id, body) => {
+  return readilyAPI.post(`articles/${id}/comments`, body).then((res) => {
+    return res.data;
+  })
+}
