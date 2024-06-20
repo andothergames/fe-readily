@@ -4,10 +4,11 @@ const readilyAPI = axios.create({
   baseURL: "https://article-feed.onrender.com/api",
 });
 
-export const fetchArticles = (slug) => {
-  const params = {params: {
-    topic: slug
-  }}
+export const fetchArticles = (slug, sort, order) => {
+  const params = {params: {}}
+  if(slug) params.params.topic = slug;
+  if(sort) params.params.sort_by = sort;
+  if(order) params.params.order = order;
   return readilyAPI
     .get("/articles", params)
     .then((res) => {
