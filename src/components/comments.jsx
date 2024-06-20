@@ -9,9 +9,14 @@ export const Comments = ({ id, commentCount }) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [isCommentPosted, setIsCommentPosted] = useState(false);
   const [apiFeedback, setApiFeedback] = useState(false);
+  const [deleteMessage, setDeleteMessage] = useState("");
 
   const handleCommentForm = () => {
     setShowCommentForm(!showCommentForm);
+  };
+
+  const triggerRefresh = () => {
+    setApiFeedback((prev) => !prev);
   };
 
   useEffect(() => {
@@ -43,10 +48,19 @@ export const Comments = ({ id, commentCount }) => {
       ) : null}
       {isCommentPosted ? <p>Your comment has been posted</p> : null}
       <h3>Comments</h3>
+      <p>{deleteMessage}</p>
 
       <ul>
         {comments.map((comment) => {
-          return <CommentCard key={comment.comment_id} comment={comment} />;
+          return (
+            <CommentCard
+              key={comment.comment_id}
+              comment={comment}
+              deleteMessage={deleteMessage}
+              setDeleteMessage={setDeleteMessage}
+              triggerRefresh={triggerRefresh}
+            />
+          );
         })}
       </ul>
     </section>
