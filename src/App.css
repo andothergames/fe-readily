@@ -2,12 +2,12 @@
 
 @font-face {
   font-family: "Plush";
-  src: url(/public/fonts/Plush-Medium-BF654c401412ccd.otf);
+  src: url(/fonts/Plush-Medium-BF654c401412ccd.otf);
 }
 
 @font-face {
   font-family: "karla";
-  src: url(/public/fonts/Karla-Light.ttf);
+  src: url(fonts/Karla-Light.ttf);
 }
 
 #root {
