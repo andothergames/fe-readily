@@ -5,7 +5,7 @@ export const ArticleCard = ({ article }) => {
   const navigate = useNavigate();
 
   const handleArticleSelect = (id) => {
-    navigate(`/articles/${id}`);
+    navigate(`/articles/article/${id}`);
   };
 
   return (

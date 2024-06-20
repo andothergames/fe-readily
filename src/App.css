@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: "karla";
-  src: url(fonts/Karla-Light.ttf);
+  src: url(/fonts/Karla-Light.ttf);
 }
 
 #root {
@@ -54,6 +54,24 @@ header {
 
 nav {
   margin: 30px;
+display: grid;
+grid-template-columns: auto auto auto auto;
+}
+
+nav div {
+  justify-content: space-between;
+}
+
+user-login-form {
+  margin-left: auto;
+}
+
+.topic-select {
+  margin: 0 auto 0 0;
+}
+
+.user-login {
+  margin: 0 0 0 auto;
 }
 
 header h1,

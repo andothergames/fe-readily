@@ -4,13 +4,12 @@ const readilyAPI = axios.create({
   baseURL: "https://article-feed.onrender.com/api",
 });
 
-export const fetchArticles = (topicQ) => {
+export const fetchArticles = (slug) => {
+  const params = {params: {
+    topic: slug
+  }}
   return readilyAPI
-    .get("/articles", {
-      params: {
-        topic: topicQ,
-      },
-    })
+    .get("/articles", params)
     .then((res) => {
       return res.data;
     });
@@ -49,5 +48,11 @@ export const postComment = (id) => {
 export const deleteComment = (id) => {
   return readilyAPI.delete(`comments/${id}`).then((res) => {
     return "Comment Deleted";
+  })
+}
+
+export const fetchTopics = () => {
+  return readilyAPI.get('topics').then((res) => {
+    return res.data;
   })
 }
