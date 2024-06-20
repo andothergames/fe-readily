@@ -4,12 +4,10 @@ import { ArticleCard } from "./ArticleCard";
 import { useParams } from "react-router-dom";
 
 export const Articles = () => {
-
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const {topic} = useParams();
+  const { topic } = useParams();
 
-  console.log(topic);
   useEffect(() => {
     setIsLoading(true);
     fetchArticles(topic).then((articles) => {
