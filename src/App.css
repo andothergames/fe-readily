@@ -243,6 +243,11 @@ img,
   background-color: white;
 }
 
+.delete-user-btn {
+float: right;
+top: 0;
+}
+
 /* FORM */
 
 .comment-form {
@@ -261,3 +266,4 @@ img,
 .input {
   margin: 20px;
 }
+
