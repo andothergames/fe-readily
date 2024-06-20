@@ -3,11 +3,18 @@ import { UserContext } from "../contexts/UserContext";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Nav = ({ topic, setTopic }) => {
+export const Nav = ({ setTopic, setSort, setOrder }) => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const { user, setUser } = useContext(UserContext);
   const [topics, setTopics] = useState([]);
+  const sortOptions = [
+    "title",
+    "author",
+    "topic",
+    "created_at",
+    "votes"
+  ];
 
   useEffect(() => {
     fetchTopics().then(({ topics }) => {
@@ -28,9 +35,21 @@ export const Nav = ({ topic, setTopic }) => {
 
   const handleSelectTopic = (e) => {
     e.preventDefault();
-    const selectedTopic = e.target.value
+    const selectedTopic = e.target.value;
     setTopic(selectedTopic);
     navigate(`/articles/${selectedTopic}`);
+  };
+
+  const handleSelectSort = (e) => {
+    e.preventDefault();
+    const selectedSort = e.target.value;
+    setSort(selectedSort);
+  };
+
+  const handleSelectOrder = (e) => {
+    e.preventDefault();
+    const selectedOrder = e.target.value;
+    setOrder(selectedOrder);
   };
 
   return (
@@ -40,11 +59,7 @@ export const Nav = ({ topic, setTopic }) => {
           <p>Topic:</p>
           <label htmlFor="topics"></label>
 
-          <select
-            name="topic"
-            id="topic"
-            onChange={handleSelectTopic}
-          >
+          <select name="topic" id="topic" onChange={handleSelectTopic}>
             <option key=""></option>
             {topics.map((topic) => {
               return (
@@ -57,16 +72,35 @@ export const Nav = ({ topic, setTopic }) => {
         </form>
       </div>
       <div>
-        <p>
-          Sort:
-          <br />
-          TBC
-        </p>
+        <form>
+          <p>Sort by:</p>
+          <label htmlFor="sort"></label>
+          <select name="sort" id="sort" onChange={handleSelectSort}>
+            <option key=""></option>
+            {sortOptions.map((sort) => {
+              return (
+                <option key={sort} value={sort}>
+                  {sort}
+                </option>
+              );
+            })}
+          </select>
+        </form>
       </div>
-      <div></div>
+      <div><form>
+          <p>Order by:</p>
+          <label htmlFor="order"></label>
+          <select name="order" id="order" onChange={handleSelectOrder}>
+          <option key=""></option>
+                <option key="asc" value="asc">asc
+                </option>
+                <option key="desc" value="desc">
+                desc</option>
+          </select>
+        </form></div>
       <div className="login-div">
         <form className="user-login-form">
-          <p>Logged in as: {`${user}`}</p>
+          <p>Logged in as:</p>
           <label htmlFor="users"></label>
 
           <select name="user" id="user" onChange={handleSelectUser}>
