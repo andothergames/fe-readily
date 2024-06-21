@@ -3,7 +3,6 @@ import { fetchArticle } from "../api";
 import { patchArticle } from "../api";
 import { dateConverter } from "../utils/dateConverter";
 import { Comments } from "./Comments";
-
 import { useParams } from "react-router-dom";
 
 export const Article = () => {
