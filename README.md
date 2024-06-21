@@ -6,7 +6,7 @@ This front-end project was developed whilst studying software development at Nor
 
 Technologies used include React, HTML, CSS and MUI library for some icons/buttons.
 
-I hosted the site using Netlify, feel free to [have a look](https://article-feed.onrender.com/api)! :frog:
+I hosted the site using Netlify, feel free to [have a look](https://main--majestic-lollipop-ffb284.netlify.app/)! :frog:
 
 Check out the [back-end repo](https://github.com/andothergames/be-readily)
 
