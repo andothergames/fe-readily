@@ -40,7 +40,7 @@ export const fetchUsers = () => {
   })
 }
 
-export const postComment = (id) => {
+export const postComment = (id, body) => {
   return readilyAPI.post(`articles/${id}/comments`, body).then((res) => {
     return res.data;
   })

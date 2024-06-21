@@ -14,13 +14,18 @@ export const Article = () => {
   const [thumbsUp, setThumbsUp] = useState("bi bi-hand-thumbs-up");
   const [thumbsDown, setThumbsDown] = useState("bi bi-hand-thumbs-down");
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetchArticle(id).then((article) => {
       setIsLoading(false);
       setSelectedArticle(article);
       setVotes(article.votes);
-    });
+    })
+    .catch((error) => {
+      setErrorMessage(error.response.data.msg);
+      setIsLoading(false);
+    })
   }, []);
 
   const handlePlusVote = () => {
@@ -45,6 +50,7 @@ export const Article = () => {
   }, [voteChange]);
 
   if (isLoading) return <p>Loading...</p>;
+  if (errorMessage) return <p>{errorMessage}</p>;
 
   return (
     <section>

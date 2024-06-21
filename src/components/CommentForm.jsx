@@ -18,6 +18,7 @@ export const CommentForm = ({
   const [comment, setComment] = useState("");
   const [author, setAuthor] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetchUsers().then((users) => {
@@ -43,7 +44,7 @@ export const CommentForm = ({
       })
       .catch((error) => {
         setIsCommentPosted(false);
-        console.log(error, "error");
+        setErrorMessage(error.response.data.msg);
       });
     setComment("");
     setAuthor("");
@@ -59,6 +60,8 @@ export const CommentForm = ({
     setAuthor(e.target.value);
   };
 
+  if (errorMessage) return <p>{errorMessage}</p>;
+  
   return (
     <section className="comment-form">
       <form onSubmit={handleSubmit}>
