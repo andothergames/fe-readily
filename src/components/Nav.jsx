@@ -3,10 +3,10 @@ import { UserContext } from "../contexts/UserContext";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Nav = ({ setTopic, setSort, setOrder }) => {
+export const Nav = ({ setSort, setOrder }) => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const [topics, setTopics] = useState([]);
   const sortOptions = [
     "title",
@@ -36,7 +36,6 @@ export const Nav = ({ setTopic, setSort, setOrder }) => {
   const handleSelectTopic = (e) => {
     e.preventDefault();
     const selectedTopic = e.target.value;
-    setTopic(selectedTopic);
     navigate(`/articles/${selectedTopic}`);
   };
 

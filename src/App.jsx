@@ -8,16 +8,14 @@ import { Article } from "./components/Article";
 import { ErrorPage } from "./components/ErrorPage";
 
 function App() {
-
-  const [topic, setTopic] = useState("");
   const [sort, setSort] = useState("");
   const [order, setOrder] = useState("");
   return (
     <section>
       <Header />
-      <Nav setTopic={setTopic} setSort={setSort} setOrder={setOrder}/>
+      <Nav setSort={setSort} setOrder={setOrder}/>
       <Routes>
-        <Route path={"/"} element={<Articles topic={topic} sort={sort} order={order}/>} />
+        <Route path={"/"} element={<Articles sort={sort} order={order}/>} />
         <Route path={"/articles"} element={<Articles  sort={sort} order={order} />} />
         <Route path={"/articles/article/:id"} element={<Article />} />
         <Route path={"/articles/:topic"} element={<Articles sort={sort} order={order} />} />
