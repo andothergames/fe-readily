@@ -2,7 +2,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
-import { useState, useEffect } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { useState, useEffect, useContext } from "react";
 import { fetchUsers } from "../api";
 import { postComment } from "../api";
 
@@ -14,9 +15,10 @@ export const CommentForm = ({
   setShowCommentForm,
   setApiFeedback,
 }) => {
+  const { user } = useContext(UserContext);
   const [users, setUsers] = useState([]);
   const [comment, setComment] = useState("");
-  const [author, setAuthor] = useState("");
+  const [author, setAuthor] = useState(user);
   const [isValid, setIsValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -47,7 +49,7 @@ export const CommentForm = ({
         setErrorMessage(error.response.data.msg);
       });
     setComment("");
-    setAuthor("");
+    setAuthor({user});
   };
 
   const handleCommentInput = (e) => {
@@ -77,7 +79,7 @@ export const CommentForm = ({
             value={author}
             className="user-dropdown"
           >
-            <MenuItem value="">
+            <MenuItem value={user}>
               <em>Select your name</em>
             </MenuItem>
             {users.map((user) => {
