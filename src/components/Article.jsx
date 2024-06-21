@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
-import { fetchArticle } from "../api";
-import { patchArticle } from "../api";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { fetchArticle, patchArticle } from "../api";
 import { dateConverter } from "../utils/dateConverter";
 import { Comments } from "./Comments";
 import { useParams } from "react-router-dom";
 
+
 export const Article = () => {
   const { id } = useParams();
+  const { user } = useContext(UserContext);
   const [selectedArticle, setSelectedArticle] = useState({});
   const [votes, setVotes] = useState(0);
   const [voteChange, setVoteChange] = useState(0);
@@ -14,6 +16,15 @@ export const Article = () => {
   const [thumbsDown, setThumbsDown] = useState("bi bi-hand-thumbs-down");
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+
+
+  useEffect(() => {
+    setThumbsUp("bi bi-hand-thumbs-up");
+    setThumbsDown("bi bi-hand-thumbs-down");
+
+
+  }, [user])
+
 
   useEffect(() => {
     fetchArticle(id).then((article) => {
@@ -29,13 +40,13 @@ export const Article = () => {
 
   const handlePlusVote = () => {
     setVoteChange(1);
-    setThumbsUp("bi bi-hand-thumbs-up-fill");
+    setThumbsUp("bi bi-hand-thumbs-up-fill  disable-click");
     setThumbsDown("bi bi-hand-thumbs-down");
   };
 
   const handleMinusVote = () => {
     setVoteChange(-1);
-    setThumbsDown("bi bi-hand-thumbs-down-fill");
+    setThumbsDown("bi bi-hand-thumbs-down-fill disable-click");
     setThumbsUp("bi bi-hand-thumbs-up");
   };
 
@@ -72,7 +83,7 @@ export const Article = () => {
           <p className="article-body">{selectedArticle.body}</p>
         </section>
         <span className="votes">
-          <i className={thumbsUp} onClick={handlePlusVote}></i>
+          <i className={thumbsUp}  onClick={handlePlusVote}></i>
           {votes}
           <i className={thumbsDown} onClick={handleMinusVote}></i>
         </span>
