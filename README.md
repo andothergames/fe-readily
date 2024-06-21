@@ -1,8 +1,43 @@
-# React + Vite
+# Readily Article App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### <img src="https://github.com/andothergames/stars/blob/main/starss/star3.png?raw=true?" width="16"> What is this Project?
 
-Currently, two official plugins are available:
+This front-end project was developed whilst studying software development at Northcoders. It is reddit-style article reader site allowing basic log in, comment/vote interactivity and sort by/filter queries to search articles.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Technologies used include React, HTML, CSS and MUI library for some icons/buttons.
+
+I hosted the site using Netlify, feel free to [have a look](https://article-feed.onrender.com/api)! :frog:
+
+Check out the [back-end repo](https://github.com/andothergames/be-readily)
+
+---
+
+### How can I play around with my own version of the repo?
+
+<img src="https://github.com/andothergames/stars/blob/main/starss/star12.png?raw=true?" width="16"> Clone the repo
+
+`git clone https://github.com/andothergames/fe-readily.git`
+
+
+<img src="https://github.com/andothergames/stars/blob/main/starss/star7.png?raw=true?" width="16"> Install dependencies
+
+`npm i`
+
+
+<img src="https://github.com/andothergames/stars/blob/main/starss/star1.png?raw=true?" width="16"> Locally run the App
+
+`npm run dev`
+Then visit the link provided (e.g. http://localhost:5173/) in browser
+
+
+--- 
+
+<img src="https://github.com/andothergames/stars/blob/main/starss/star2.png?raw=true?" width="14"> Versions
+
+This project was built with:
+Node.js: v.21.7.0
+
+
+--- 
+
+##### This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
