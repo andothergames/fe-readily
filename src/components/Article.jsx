@@ -1,20 +1,29 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
 import { fetchArticle, patchArticle } from "../api";
 import { dateConverter } from "../utils/dateConverter";
 import { Comments } from "./Comments";
 import { useParams } from "react-router-dom";
 
+
 export const Article = () => {
   const { id } = useParams();
+  const { user } = useContext(UserContext);
   const [selectedArticle, setSelectedArticle] = useState({});
   const [votes, setVotes] = useState(0);
   const [voteChange, setVoteChange] = useState(0);
-  const [isValidUp, setIsValidUp] = useState(false);
-  const [isValidDown, setIsValidDown] = useState(false);
   const [thumbsUp, setThumbsUp] = useState("bi bi-hand-thumbs-up");
   const [thumbsDown, setThumbsDown] = useState("bi bi-hand-thumbs-down");
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+
+
+  useEffect(() => {
+    setThumbsUp("bi bi-hand-thumbs-up");
+    setThumbsDown("bi bi-hand-thumbs-down");
+
+
+  }, [user])
 
 
   useEffect(() => {
@@ -33,14 +42,12 @@ export const Article = () => {
     setVoteChange(1);
     setThumbsUp("bi bi-hand-thumbs-up-fill  disable-click");
     setThumbsDown("bi bi-hand-thumbs-down");
-    setIsValidUp(true);
   };
 
   const handleMinusVote = () => {
     setVoteChange(-1);
     setThumbsDown("bi bi-hand-thumbs-down-fill disable-click");
     setThumbsUp("bi bi-hand-thumbs-up");
-    setIsValidDown(true);
   };
 
   useEffect(() => {
